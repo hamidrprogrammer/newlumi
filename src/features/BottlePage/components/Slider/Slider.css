@@ -1,0 +1,172 @@
+/* BottlePage/components/Slider/Slider.css */
+/* ────────────────────────────────
+   Container
+   ──────────────────────────────── */
+.slider {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* ────────────────────────────────
+   Slides
+   ──────────────────────────────── */
+.slides-wrapper {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+  height: 600px; /* دسکتاپ - Desktop */
+  /* Consider min-height or aspect-ratio based content for more flexibility */
+}
+
+.slide {
+  flex: 0 0 27%; /* دسکتاپ - Desktop */
+  position: relative;
+  margin-left: 15px;
+  margin-right: 15px;
+  box-sizing: border-box; /* Ensure padding is included in flex-basis */
+}
+
+.slide img, /* Applied to direct img children if not using .slide-image-responsive */
+.slide-image-responsive {
+  width: 100%;
+  height: 100%; /* For desktop, if .slide has fixed height */
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+  border-radius: 12px; /* If you want rounded images */
+}
+
+/* Specific class for responsive image handling */
+.slide-image-responsive {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio by default */
+  max-height: 300px; /* Default max height, can be overridden */
+  object-fit: cover;
+}
+
+
+/* ────────────────────────────────
+   Overlay
+   ──────────────────────────────── */
+.slide-content {
+  position: absolute;
+  bottom: 25%; /* Adjusted for potentially taller slides or better mobile placement */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%; /* Adjusted for better fit on various slide widths */
+  max-width: 323px; /* Retain max-width from desktop for consistency if desired */
+  padding: 1rem; /* Added padding for content */
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  box-sizing: border-box;
+}
+
+.slide-text {
+  color: #ffffff;
+  font-size: 1.1rem;
+  margin: 0;
+  text-align: center;
+  line-height: 1.4;
+  /* Removed fixed height: 80px; to allow content to define height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px; /* Ensure a minimum height for text */
+}
+
+/* ────────────────────────────────
+   Buttons (Desktop - hidden on mobile by default)
+   ──────────────────────────────── */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #ffffff;
+  padding: 1rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: background 0.3s ease;
+  z-index: 10; /* Ensure buttons are above slides */
+}
+
+.slider-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.prev { left: 2rem; }
+.next { right: 2rem; }
+
+/* ────────────────────────────────
+   Dots (Desktop - hidden on mobile by default)
+   ──────────────────────────────── */
+.dots-container {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: #ffffff;
+  transform: scale(1.2);
+}
+
+/* ────────────────────────────────
+   Mobile ≤ 768 px
+   ──────────────────────────────── */
+@media (max-width: 768px) {
+  .slides-wrapper {
+    min-height: 380px; /* Use min-height instead of fixed height */
+    height: auto; /* Allow content to determine height */
+  }
+
+  .slide {
+    flex: 0 0 100%;    /* Full width for mobile slides */
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 5%; /* Padding inside the slide for content, instead of margin */
+  }
+
+  /* Ensure image within the slide is responsive */
+  .slide img,
+  .slide-image-responsive {
+    height: auto; /* Maintain aspect ratio */
+    max-height: 280px; /* Adjust max-height for mobile images if needed */
+    width: 100%;
+    object-fit: contain; /* Changed to contain to see full image, or keep cover */
+  }
+
+  .slide-content {
+    width: 90%; /* Relative to the slide's new full width */
+    bottom: 10%;
+    padding: 0.8rem;
+  }
+
+  .slide-text {
+    font-size: 1rem;
+    min-height: 50px; /* Adjust min-height for mobile */
+  }
+
+  .slider-btn { /* Keep default slider buttons hidden on mobile if external controls are used */
+    display: none;
+  }
+
+  .dots-container { /* Keep dots hidden on mobile if not desired */
+    display: none;
+  }
+}

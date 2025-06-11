@@ -1,0 +1,91 @@
+/* LongevityBanner.module.css */
+.longevityBanner {
+background: linear-gradient(180deg, #0F3445 0%, #000000 100%);
+    padding: 40px 20px; /* Mobile first padding (Original 768px) */
+    display: flex;
+    flex-direction: column; /* Mobile: stack elements (Original 768px) */
+    justify-content: center; /* Mobile: center content */
+    align-items: center; /* Mobile: center items (Original 768px) */
+    min-height: auto; /* Mobile: let content define height */
+    font-family: sans-serif; /* */
+    text-align: center; /* Mobile: center text (Original 768px) */
+    max-height: 350px;
+}
+
+.longevityBannerText {
+    color: #3FFFF8; /* */
+    font-size: 2.2em; /* Base mobile font size (Original 480px was 2em, 768px was 2.5em) */
+    line-height: 1.2; /* */
+    padding-left: 0; /* Mobile: remove desktop padding (Original had padding-left: 90px) */
+    margin-bottom: 30px; /* Space between text and button (Original 768px) */
+    max-width: 100%; /* (Original 768px) */
+}
+
+.longevityBannerText strong {
+    font-weight: bold; /* */
+}
+
+.buttonContainer {
+    display: flex;
+    width: 100%; /* Mobile: full width */
+    height: auto; /* Mobile: auto height (Original was 500px) */
+    align-items: center; /* Mobile: center button */
+    justify-content: center; /* Mobile: center button (Original was flex-end) */
+}
+
+.exploreButton {
+    background-color: #ffffff; /* */
+    color: #000000; /* */
+    border: none; /* */
+    height: auto; /* Let padding define height */
+    padding: 14px 28px; /* Mobile padding (Original 768px: 12px 25px) */
+    border-radius: 50px; /* */
+    font-size: 0.95em; /* Mobile font size (Original 768px: 0.9em) */
+    font-weight: bold; /* */
+    cursor: pointer; /* */
+    text-decoration: none; /* */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* */
+    transition: background-color 0.3s ease; /* */
+    display: inline-block; /* Ensure it behaves well */
+}
+
+.exploreButton:hover {
+    background-color: #f0f0f0; /* */
+}
+
+/* Responsive adjustments for tablets and desktops */
+@media (min-width: 769px) {
+    .longevityBanner {
+        flex-direction: row; /* (Original was in max-width:768px for column) */
+        justify-content: space-between; /* */
+        padding: 60px 40px; /* */
+        min-height: 500px; /* */
+        text-align: left; /* Reset text align for desktop */
+    }
+
+    .longevityBannerText {
+        font-size: 4.5em; /* */
+        padding-left: 90px; /* */
+        margin-bottom: 0; /* Reset margin for desktop */
+    }
+    
+    .buttonContainer {
+       width: auto; /* Desktop: auto width */
+       height: 500px; /* */ /* Or 100% of banner height */
+       align-items: flex-end; /* */
+       justify-content: flex-end; /* */
+    }
+
+    .exploreButton {
+        font-size: 1em; /* */
+        padding: 15px 30px; /* */
+        height: 50px; /* */
+    }
+}
+
+/* Further adjustments for very small mobile screens if needed, already covered by base mobile styles */
+/* @media (max-width: 480px) {
+    .longevityBannerText {
+        // font-size: 2em; // // Already handled by the new base
+    }
+} */
